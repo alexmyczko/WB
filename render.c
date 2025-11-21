@@ -26,6 +26,11 @@ int init_render(unsigned short view_width, unsigned short view_height){
   }
   (void)puts("--<DONE]");
 
+  if (!al_init_primitives_addon()) {
+    fprintf(stderr, "Failed to init Allegro primitives!\n");
+    return 1;
+  }
+
   /* Initialize truetype fonts addon */
   (void)fputs("[al_init_ttf_addon>--", stdout);
   if(!al_init_ttf_addon()){
